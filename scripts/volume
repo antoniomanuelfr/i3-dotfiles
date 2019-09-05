@@ -1,0 +1,17 @@
+#!/bin/bash
+STEP="5"
+ST=`pamixer --get-volume-human | cut -d '%' -f 1`
+
+if [ $ST == "muted" ];then 
+
+       echo -e '\uf6a9'
+else
+	echo " ${ST}%"	
+
+fi
+case $BLOCK_BUTTON in
+  1) pavucontrol ;;	
+  3) pamixer -t ;;  # right click, mute/unmute
+  4) pamixer -d ${STEP} ;; # scroll up, increase
+  5) pamixer -i ${STEP};; # scroll down, decrease
+esac

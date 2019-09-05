@@ -1,0 +1,8 @@
+#!/bin/bash
+xbacklight -get | cut -d'.' -f 1
+
+case $BLOCK_BUTTON in 
+1) xfce4-power-manager-settings ;;
+4) xbacklight -dec 5 && pkill -RTMIN+3 i3blocks;;  #scroll up
+5) xbacklight -inc 5 && pkill -RTMIN+3 i3blocks;;  #scroll down
+esac
